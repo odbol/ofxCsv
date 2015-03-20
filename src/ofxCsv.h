@@ -78,6 +78,9 @@ namespace wng {
 			float  getFloat(int row, int col);
 			string getString(int row, int col);
 			bool   getBool(int row, int col);
+        
+            // converts entire rows into vectors of new datatype
+            vector<float>* getFloatsInColumn(int col);
 		
 			void setInt(int row, int col, int what);
 			void setFloat(int row, int col, float what);

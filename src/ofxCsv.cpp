@@ -494,4 +494,23 @@ namespace wng {
         }
         if ( data[ row ].size() <= col ) data[ row ].push_back("");
     }
+    
+    
+    
+    /**
+     * getFloatsInColumn
+     * Converts all rows in the given column to floats.
+     *
+     * When you are done with the object, make sure to delete it.
+     */
+    vector<float>* ofxCsv::getFloatsInColumn(int col) {
+        vector<float>* result = new vector<float>(numRows);
+        
+        for (int i = 0; i < numRows; i++) {
+            auto val = this->getFloat(i, col);
+            result->at(i) = (val);
+        }
+        
+        return result;
+    }
 }
