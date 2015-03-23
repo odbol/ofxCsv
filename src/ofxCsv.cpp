@@ -58,7 +58,7 @@ namespace wng {
 	
 	
 	/**
-	 * Load a CSV File.
+	 * Load a CSV File. Discards any previously loaded CSV data.
 	 *
 	 * @param path
 	 *        Set the File path.
@@ -68,7 +68,9 @@ namespace wng {
 	 *        Set the Comments sign.
 	 */
 	void ofxCsv::loadFile(string path, string separator, string comments){
-		
+        // discard any previous file data.
+        clear();
+        
 		// Save Filepath, Separator and Comments to variables.
 		filePath = path;
 		fileSeparator = separator;
@@ -127,11 +129,13 @@ namespace wng {
 			rows.erase(rows.begin(), rows.end());
 			//cout << "rows: After erasing all elements, vector integers " << (rows.empty() ? "is" : "is not" ) << " empty" << endl;
 		
+            // close file now that we're done with it to free up resources.
+            fileIn.close();
+            
 			// If File cannot opening, print a message to console.
 		} else {
 			cerr << "[ofxCsv] Error opening " << path << ".\n";
 		}
-	
 	}
     
     void ofxCsv::setData( vector<vector<string> > data)
